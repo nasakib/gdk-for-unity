@@ -1,7 +1,9 @@
 {
     "name": "Improbable.Gdk.TestUtils.Editor",
     "references": [
-        "Improbable.Gdk.Tools"
+        "Improbable.Gdk.Tools",
+        "Unity.PerformanceTesting",
+        "Unity.PerformanceTesting.Editor"
     ],
     "includePlatforms": [
         "Editor"

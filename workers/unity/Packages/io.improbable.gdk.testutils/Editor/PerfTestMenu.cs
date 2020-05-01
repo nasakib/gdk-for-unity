@@ -1,7 +1,10 @@
 using System;
 using System.IO;
+using NUnit.Framework.Internal;
 using UnityEditor;
 using UnityEngine;
+using Unity.PerformanceTesting;
+using Unity.PerformanceTesting.Editor;
 
 namespace Improbable.Gdk.TestUtils.Editor
 {
@@ -39,6 +42,43 @@ namespace Improbable.Gdk.TestUtils.Editor
             if (Directory.Exists(ResultsPath))
             {
                 Directory.Delete(ResultsPath, true);
+            }
+        }
+    }
+
+    public class PerfTestVisualiser
+    {
+        [MenuItem("SpatialOS/Parse Results")]
+        public static void ParseResults()
+        {
+            var xmlResultsPath =
+                "C:\\Users\\paulbalaji\\work\\core\\gdk-for-unity\\test-project\\perftest\\results\\2020-03-10T17_23_20\\TestResults.xml";
+            ParseResults(xmlResultsPath);
+        }
+
+        private static void ParseResults(string xmlResultsPath)
+        {
+            var parser = new Unity.PerformanceTesting.Editor.TestResultXmlParser();
+            var testRun = parser.GetPerformanceTestRunFromXml(xmlResultsPath);
+            if (testRun == null)
+            {
+                //something has gone wrong, check the logs
+                return;
+            }
+
+            Debug.Log(testRun.Date);
+            Debug.Log(string.Join("\n", testRun.Dependencies));
+            Debug.Log(testRun.Editor);
+            Debug.Log(testRun.Hardware);
+            Debug.Log(testRun.Player);
+            Debug.Log(testRun.TestSuite);
+
+            foreach (var result in testRun.Results)
+            {
+                foreach (var category in result.Categories)
+                {
+                    Debug.Log(category);
+                }
             }
         }
     }
