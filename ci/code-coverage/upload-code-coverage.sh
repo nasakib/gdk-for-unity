@@ -15,9 +15,12 @@ buildkite-agent artifact download \
     logs/coverage-results \
     --step ":windows: ~ test"
 
+TOKEN=$(imp-ci secrets read --environment="production" --buildkite-org="improbable" --secret-type="generic-token" --secret-name="gdk-for-unity-bot-sonarcloud-token" --field="token")
+
 args=()
 args+=("-Dsonar.buildString=${BUILDKITE_MESSAGE}")
 args+=("-Dsonar.log.level=${SONAR_LOG_LEVEL:-"INFO"}")
+args+=("-Dsonar.")
 if [[ -n "${SONAR_PROJECT_DATE:-}" ]]; then
   # For historical analysis. Note - can only supply a date later than the most recent one in the database.
   args+=("-Dsonar.projectDate=${SONAR_PROJECT_DATE}")
@@ -39,6 +42,7 @@ pushd ci/code-coverage
 popd
 
 docker run \
+    -e SONAR_TOKEN="${TOKEN}"
     --user="$(id -u):$(id -g)" \
     -v "$(pwd):/usr/src" \
     -it \
