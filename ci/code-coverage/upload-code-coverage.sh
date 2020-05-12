@@ -42,7 +42,7 @@ pushd ci/code-coverage
 popd
 
 docker run \
-    -e SONAR_TOKEN="${TOKEN}"
+    -e SONAR_TOKEN="${TOKEN}" \
     --user="$(id -u):$(id -g)" \
     -v "$(pwd):/usr/src" \
     -it \
