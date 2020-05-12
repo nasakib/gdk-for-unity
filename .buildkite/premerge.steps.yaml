@@ -87,7 +87,7 @@ steps:
   - label: ":debian: ~ upload code coverage reports"
     depends_on:
       - step: "test-windows"
-    command: bash -c ci/upload-code-coverage.sh
+    command: bash -c ci/code-coverage/upload-code-coverage.sh
     <<: *linux
 
   # - label: ":debian: ~ annotate :windows: test results :pencil2:"
