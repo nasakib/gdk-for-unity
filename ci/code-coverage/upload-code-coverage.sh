@@ -36,6 +36,9 @@ if [[ -n "${BUILDKITE_PULL_REQUEST:-}" && "${BUILDKITE_PULL_REQUEST}" != "false"
   args+=("-Dsonar.pullrequest.branch=${BUILDKITE_PULL_REQUEST_BASE_BRANCH}")
   args+=("-Dsonar.pullrequest.base=develop")
 fi
+if [[ -n "${DEBUG-}" ]]; then
+  args+=("--debug")
+fi
 
 pushd ci/code-coverage
   docker build --tag local/sonar-analysis .
