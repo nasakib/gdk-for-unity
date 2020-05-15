@@ -16,6 +16,7 @@ namespace Improbable.DependentSchema
             public string Name => "DependentDataComponent";
 
             public Type Data { get; } = typeof(global::Improbable.DependentSchema.DependentDataComponent.Component);
+            public Type Authority { get; } = typeof(global::Improbable.DependentSchema.DependentDataComponent.HasAuthority);
             public Type Snapshot { get; } = typeof(global::Improbable.DependentSchema.DependentDataComponent.Snapshot);
             public Type Update { get; } = typeof(global::Improbable.DependentSchema.DependentDataComponent.Update);
 
@@ -24,7 +25,6 @@ namespace Improbable.DependentSchema
             public Type DiffDeserializer { get; } = typeof(global::Improbable.DependentSchema.DependentDataComponent.DiffComponentDeserializer);
 
             public Type DiffStorage { get; } = typeof(global::Improbable.DependentSchema.DependentDataComponent.DiffComponentStorage);
-            public Type ViewStorage { get; } = typeof(global::Improbable.DependentSchema.DependentDataComponent.DependentDataComponentViewStorage);
             public Type EcsViewManager { get; } = typeof(global::Improbable.DependentSchema.DependentDataComponent.EcsViewManager);
             public Type DynamicInvokable { get; } = typeof(global::Improbable.DependentSchema.DependentDataComponent.DependentDataComponentDynamic);
 

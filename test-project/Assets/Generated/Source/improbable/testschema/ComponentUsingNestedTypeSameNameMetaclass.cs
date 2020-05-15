@@ -16,6 +16,7 @@ namespace Improbable.TestSchema
             public string Name => "ComponentUsingNestedTypeSameName";
 
             public Type Data { get; } = typeof(global::Improbable.TestSchema.ComponentUsingNestedTypeSameName.Component);
+            public Type Authority { get; } = typeof(global::Improbable.TestSchema.ComponentUsingNestedTypeSameName.HasAuthority);
             public Type Snapshot { get; } = typeof(global::Improbable.TestSchema.ComponentUsingNestedTypeSameName.Snapshot);
             public Type Update { get; } = typeof(global::Improbable.TestSchema.ComponentUsingNestedTypeSameName.Update);
 
@@ -24,7 +25,6 @@ namespace Improbable.TestSchema
             public Type DiffDeserializer { get; } = typeof(global::Improbable.TestSchema.ComponentUsingNestedTypeSameName.DiffComponentDeserializer);
 
             public Type DiffStorage { get; } = typeof(global::Improbable.TestSchema.ComponentUsingNestedTypeSameName.DiffComponentStorage);
-            public Type ViewStorage { get; } = typeof(global::Improbable.TestSchema.ComponentUsingNestedTypeSameName.ComponentUsingNestedTypeSameNameViewStorage);
             public Type EcsViewManager { get; } = typeof(global::Improbable.TestSchema.ComponentUsingNestedTypeSameName.EcsViewManager);
             public Type DynamicInvokable { get; } = typeof(global::Improbable.TestSchema.ComponentUsingNestedTypeSameName.ComponentUsingNestedTypeSameNameDynamic);
 

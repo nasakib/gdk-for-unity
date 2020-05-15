@@ -16,6 +16,7 @@ namespace Improbable.Tests
             public string Name => "DependencyTestChild";
 
             public Type Data { get; } = typeof(global::Improbable.Tests.DependencyTestChild.Component);
+            public Type Authority { get; } = typeof(global::Improbable.Tests.DependencyTestChild.HasAuthority);
             public Type Snapshot { get; } = typeof(global::Improbable.Tests.DependencyTestChild.Snapshot);
             public Type Update { get; } = typeof(global::Improbable.Tests.DependencyTestChild.Update);
 
@@ -24,7 +25,6 @@ namespace Improbable.Tests
             public Type DiffDeserializer { get; } = typeof(global::Improbable.Tests.DependencyTestChild.DiffComponentDeserializer);
 
             public Type DiffStorage { get; } = typeof(global::Improbable.Tests.DependencyTestChild.DiffComponentStorage);
-            public Type ViewStorage { get; } = typeof(global::Improbable.Tests.DependencyTestChild.DependencyTestChildViewStorage);
             public Type EcsViewManager { get; } = typeof(global::Improbable.Tests.DependencyTestChild.EcsViewManager);
             public Type DynamicInvokable { get; } = typeof(global::Improbable.Tests.DependencyTestChild.DependencyTestChildDynamic);
 

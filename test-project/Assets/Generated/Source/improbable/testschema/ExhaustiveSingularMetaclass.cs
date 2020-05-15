@@ -16,6 +16,7 @@ namespace Improbable.TestSchema
             public string Name => "ExhaustiveSingular";
 
             public Type Data { get; } = typeof(global::Improbable.TestSchema.ExhaustiveSingular.Component);
+            public Type Authority { get; } = typeof(global::Improbable.TestSchema.ExhaustiveSingular.HasAuthority);
             public Type Snapshot { get; } = typeof(global::Improbable.TestSchema.ExhaustiveSingular.Snapshot);
             public Type Update { get; } = typeof(global::Improbable.TestSchema.ExhaustiveSingular.Update);
 
@@ -24,7 +25,6 @@ namespace Improbable.TestSchema
             public Type DiffDeserializer { get; } = typeof(global::Improbable.TestSchema.ExhaustiveSingular.DiffComponentDeserializer);
 
             public Type DiffStorage { get; } = typeof(global::Improbable.TestSchema.ExhaustiveSingular.DiffComponentStorage);
-            public Type ViewStorage { get; } = typeof(global::Improbable.TestSchema.ExhaustiveSingular.ExhaustiveSingularViewStorage);
             public Type EcsViewManager { get; } = typeof(global::Improbable.TestSchema.ExhaustiveSingular.EcsViewManager);
             public Type DynamicInvokable { get; } = typeof(global::Improbable.TestSchema.ExhaustiveSingular.ExhaustiveSingularDynamic);
 

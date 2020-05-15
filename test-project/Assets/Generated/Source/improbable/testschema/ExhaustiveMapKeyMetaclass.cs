@@ -16,6 +16,7 @@ namespace Improbable.TestSchema
             public string Name => "ExhaustiveMapKey";
 
             public Type Data { get; } = typeof(global::Improbable.TestSchema.ExhaustiveMapKey.Component);
+            public Type Authority { get; } = typeof(global::Improbable.TestSchema.ExhaustiveMapKey.HasAuthority);
             public Type Snapshot { get; } = typeof(global::Improbable.TestSchema.ExhaustiveMapKey.Snapshot);
             public Type Update { get; } = typeof(global::Improbable.TestSchema.ExhaustiveMapKey.Update);
 
@@ -24,7 +25,6 @@ namespace Improbable.TestSchema
             public Type DiffDeserializer { get; } = typeof(global::Improbable.TestSchema.ExhaustiveMapKey.DiffComponentDeserializer);
 
             public Type DiffStorage { get; } = typeof(global::Improbable.TestSchema.ExhaustiveMapKey.DiffComponentStorage);
-            public Type ViewStorage { get; } = typeof(global::Improbable.TestSchema.ExhaustiveMapKey.ExhaustiveMapKeyViewStorage);
             public Type EcsViewManager { get; } = typeof(global::Improbable.TestSchema.ExhaustiveMapKey.EcsViewManager);
             public Type DynamicInvokable { get; } = typeof(global::Improbable.TestSchema.ExhaustiveMapKey.ExhaustiveMapKeyDynamic);
 

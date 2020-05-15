@@ -16,6 +16,7 @@ namespace Improbable.TestSchema
             public string Name => "RecursiveComponent";
 
             public Type Data { get; } = typeof(global::Improbable.TestSchema.RecursiveComponent.Component);
+            public Type Authority { get; } = typeof(global::Improbable.TestSchema.RecursiveComponent.HasAuthority);
             public Type Snapshot { get; } = typeof(global::Improbable.TestSchema.RecursiveComponent.Snapshot);
             public Type Update { get; } = typeof(global::Improbable.TestSchema.RecursiveComponent.Update);
 
@@ -24,7 +25,6 @@ namespace Improbable.TestSchema
             public Type DiffDeserializer { get; } = typeof(global::Improbable.TestSchema.RecursiveComponent.DiffComponentDeserializer);
 
             public Type DiffStorage { get; } = typeof(global::Improbable.TestSchema.RecursiveComponent.DiffComponentStorage);
-            public Type ViewStorage { get; } = typeof(global::Improbable.TestSchema.RecursiveComponent.RecursiveComponentViewStorage);
             public Type EcsViewManager { get; } = typeof(global::Improbable.TestSchema.RecursiveComponent.EcsViewManager);
             public Type DynamicInvokable { get; } = typeof(global::Improbable.TestSchema.RecursiveComponent.RecursiveComponentDynamic);
 
