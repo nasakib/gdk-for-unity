@@ -30,16 +30,16 @@ namespace Improbable.Gdk.Core
         /// </summary>
         public bool IsConnected => Worker.IsConnected;
 
-        internal readonly View View;
-
+        private readonly Dictionary<string, string> workerFlags = new Dictionary<string, string>();
         internal readonly Dictionary<EntityId, Entity> EntityIdToEntity = new Dictionary<EntityId, Entity>();
 
-        internal WorkerInWorld Worker;
+        internal readonly WorkerInWorld Worker;
 
         internal ViewDiff Diff => Worker.ViewDiff;
         internal MessagesToSend MessagesToSend => Worker.MessagesToSend;
 
         private ProfilerMarker tickMarker = new ProfilerMarker("WorkerSystem.Tick");
+        private ProfilerMarker applyDiffMarker = new ProfilerMarker("WorkerSystem.ApplyDiff");
 
         public WorkerSystem(WorkerInWorld worker)
         {
@@ -49,7 +49,6 @@ namespace Improbable.Gdk.Core
             WorkerType = worker.WorkerType;
             WorkerId = worker.WorkerId;
             Origin = worker.Origin;
-            View = worker.View;
         }
 
         /// <summary>
@@ -93,6 +92,16 @@ namespace Improbable.Gdk.Core
             Worker.MessagesToSend.AddLogMessage(new LogMessageToSend(message, loggerName, logLevel, entityId?.Id));
         }
 
+        /// <summary>
+        ///     Gets the value for a given worker flag.
+        /// </summary>
+        /// <param name="name">The name of the worker flag.</param>
+        /// <returns>The value of the flag, if it exists, null otherwise.</returns>
+        public string GetWorkerFlag(string name)
+        {
+            return workerFlags.TryGetValue(name, out var value) ? value : null;
+        }
+
         public void SendMetrics(Metrics metrics)
         {
             Worker.MessagesToSend.AddMetrics(metrics);
@@ -109,6 +118,17 @@ namespace Improbable.Gdk.Core
         internal void SendMessages(NetFrameStats frameStats)
         {
             Worker.EnsureMessagesFlushed(frameStats);
+        }
+
+        internal void ApplyDiff(ViewDiff diff)
+        {
+            using (applyDiffMarker.Auto())
+            {
+                foreach (var pair in diff.GetWorkerFlagChanges())
+                {
+                    workerFlags[pair.Item1] = pair.Item2;
+                }
+            }
         }
 
         protected override void OnCreate()
