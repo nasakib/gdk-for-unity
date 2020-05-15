@@ -21,8 +21,6 @@ namespace Improbable.Gdk.GameObjectCreation
 
         private readonly GameObject workerGameObject;
 
-        private EntitySystem entitySystem;
-
         private EntityQuery newEntitiesQuery;
         private EntityQuery removedEntitiesQuery;
 
@@ -37,8 +35,6 @@ namespace Improbable.Gdk.GameObjectCreation
         protected override void OnCreate()
         {
             base.OnCreate();
-
-            entitySystem = World.GetExistingSystem<EntitySystem>();
 
             Linker = new EntityGameObjectLinker(World);
 
